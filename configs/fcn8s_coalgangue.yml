@@ -1,0 +1,39 @@
+model:
+    arch: fcn8s
+data:
+    dataset: coalgangue
+    train_split: train_aug
+    val_split: val
+    img_rows: 'same'
+    img_cols: 'same'
+    #path: /private/home/meetshah/datasets/VOC/060817/VOCdevkit/VOC2012/
+    path: /home/johnliang/program/pytorch-semseg-master/dataset/coalgangue/
+
+    #sbd_path: D:\\Data\\3D\\VOC\\benchmark_RELEASE\\
+    #sbd_path: D:/Data/3D/pytorch-semseg-master/benchmark_RELEASE/
+
+training:
+    #john202007
+    train_iters: 8
+    #train_iters: 3
+    #train_iters: 300000
+    
+    batch_size: 1
+    #batch_size: 1
+
+    #john202007
+    #val_interval: 20
+    val_interval: 1000
+
+    n_workers: 1
+    print_interval: 50
+    optimizer:
+        name: 'sgd'
+        lr: 1.0e-10
+        weight_decay: 0.0005
+        momentum: 0.99
+    loss:
+        name: 'cross_entropy'
+        size_average: False
+    lr_schedule:
+    resume: fcn8s_coalgangue_best_model.pkl
